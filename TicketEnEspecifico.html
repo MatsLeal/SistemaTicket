@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	<link rel="stylesheet" href="css/master.css">
+</head>
+<body>
+	<!-- Barra lateral de navegación. No tocar, es frágil. :( -->
+	<nav class="closed" id="navigationBar">
+		<div class="control"><i class="fa fa-bars fa-2x" id="navButton"></i></div>
+		<ul class="user-info">
+			<li><i class="fa fa-user fa-lg"></i><p>Username</p></li><!-- Nombre de usuario de la sesión actual -->
+			<li><i class="fa fa-envelope fa-lg"></i><p>username@mail.com</p></li><!-- Correo electrónico de la seción actual -->
+		</ul>
+		<ul class="nav-bar">
+			<li ><a href="DashBoard.html"><i class="fa fa-home fa-lg"></i><p>Inicio</p></a></li>
+			<li><a href="Ticket.html"><i class="fa fa-ticket fa-lg"></i><p>Tickets</p></a></li>
+			<li><a href="RegistrarUsuario.html"><i class="fa fa-user-plus fa-lg"></i><p>Registrar usuario</p></a></li>
+		</ul>
+		<ul class="nav-bar bottom">
+			<li><a href="#"><i class="fa fa-sign-out fa-lg"></i>Salir</a></li>
+		</ul>
+	</nav>
+	<!-- Contenido de la página -->
+	<section class="container">
+		<div class="ticket">
+			<!-- Agregar enlace para envíar el formulario -->
+			<form action="#" method="post">
+				<h1 class="page-header">Username</h1><!-- Nombre de usuario de quien generó el ticket -->
+				<!-- Cambia los valores del select -->
+				<select name="estado" id=""><!-- Prioridad del ticket. Mantener esto en el valor actual del ticket en cuestión. -->
+					<option value="baja">No urgente</option>
+					<option value="mediana">Urgente</option>
+					<option value="alta">Muy urgente</option>
+				</select>
+				<div class="info">
+					<p>username@mail.com</p><!-- Correo electrónico de quien generó el ticket -->
+					<p>Departamento</p><!-- ??? Venía en la documentación -->
+				</div>
+				<div class="message">
+					<!-- Mensaje completo del ticket -->
+					<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.</p>
+				</div>
+				<div class="comments">
+					<!-- Comentario de quien generó el ticket -->
+					<div class="they">
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+					</div>
+					<!-- Comentario del administrador -->
+					<div class="me">
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.
+					</div>
+				</div>
+				<div class="leave-comment">
+					<!-- Campo de texto para agregar un nuevo commentario, está dentro del mismo form que el select
+					de la prioridad del ticket. -->
+					<textarea name="comment" id="" cols="30" rows="10" class="form-control"></textarea>
+					<button class="btn btn-lg">Enviar</button>
+				</div>
+			</form>
+		</div>
+	</section>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+	<script src="js/master.js"></script>>
+</body>
+</html>

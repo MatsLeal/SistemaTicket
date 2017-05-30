@@ -1,0 +1,244 @@
+/* Si tocas esta parte, te mato. */
+
+* {
+	font-family: 'Ubuntu', arial;
+}
+
+.login-form {
+	height: 50vh;
+	margin: 20vh 0;
+}
+
+a,
+a:hover,
+a:active,
+a:focus,
+a:focus:active {
+	color: inherit;
+	text-decoration: none;
+}
+
+button:active,
+button:focus,
+button:focus:active,
+button:active:focus {
+	outline: 0;
+}
+
+.btn {
+	background-color: rgb(210, 210, 210);
+	border: 1px solid rgb(150, 150, 150);
+}
+form {
+	z-index: -1;
+}
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 200px;
+	height: 100vh;
+	padding: 0;
+	padding-top: 5px;
+	margin: 0;
+	color: white;
+	background-color: rgb(25, 25, 25);
+	z-index: 99;
+}
+
+nav > * {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+}
+
+nav > * > li {
+	padding: 0;
+}
+
+nav > .nav-bar > li > a,
+nav > .user-info > li {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 15px 15px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+nav > .nav-bar > li > a > *,
+nav > .user-info > li > * {
+	display: inline;
+}
+
+nav > .nav-bar > li > a > i,
+nav > .user-info > li > i {
+	margin-right: 20px;
+	margin-left: 5px;
+}
+
+nav > .control {
+	background-color: black;
+	margin: 5px 0;
+	margin-left: 170px;
+	right: 0;
+	width: 0;
+}
+
+nav > .user-info {
+	border-bottom: 1px solid black;
+	text-align: left;
+}
+
+nav > .bottom {
+	position: absolute;
+	bottom: 0;
+}
+
+nav > .nav-bar > li > a:hover {
+	background-color: rgb(0, 0, 0);
+}
+
+nav.closed {
+	width: 55px;
+}
+
+nav.closed > .nav-bar > li > a,
+nav.closed > .user-info > li {
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 15px 15px;	
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: visible;
+}
+
+nav.closed > .nav-bar > li > a > p,
+nav.closed > .user-info > li > p {
+	display: none;
+}
+
+nav.closed > .control {
+	background-color: black;
+	margin: 5px 0;
+	margin-left: 15px;
+	right: 0;
+	width: 0;
+}
+
+.tickets-panel {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+}
+
+.tickets-panel > .ticket {
+	display: inline-block;
+	width: 23%;
+	margin: 10px 1%;
+	padding: 20px;
+	background-color: rgb(240, 240, 240);
+	border-radius: 10px;
+	font-size: initial;
+}
+
+.tickets-panel > .ticket > .state {
+	float: right;
+	width: 20px;
+	height: 20px;
+	border-radius: 100%;
+}
+
+.tickets-panel > .ticket > .danger {
+	background-color: red;
+}
+
+.tickets-panel > .ticket > .warning {
+	background-color: yellow;
+}
+
+.tickets-panel > .ticket > .success {
+	background-color: green;
+}
+
+.tickets-panel > .ticket > .info {
+	margin-bottom: 10px;
+	font-size: 17px;
+}
+
+.tickets-panel > .ticket > .info > .username {
+	font-weight: bold;
+}
+
+.tickets-panel > .ticket > .info > .email {
+	font-style: italic;
+	font-size: 12px;
+}
+
+.ticket > form > select {
+	float: right;
+	height: 35px;
+	margin-right: 25px;
+	border: 0;
+	border-radius: 10px;
+	background-color: rgb(240, 240, 240);
+	font-size: 20px;
+}
+
+.ticket > form > select:focus,
+.ticket > form > select:active,
+.ticket > form > select:focus:active {
+	outline: 0;
+}
+
+.ticket > form > select > option {
+	width: 100%;
+	background-color: rgb(240, 240, 240);
+}
+
+.ticket > form > .info {
+	padding: 0 25px;
+	font-style: italic;
+	font-size: 16px;
+}
+
+.ticket > form > .message {
+	margin-bottom: 25px;
+	border-bottom: 1px solid rgb(230, 230, 230);
+	font-size: 18px;
+	text-align: justify;
+}
+
+.ticket > form > .comments {
+	margin-bottom: 25px;
+	border-bottom: 1px solid rgb(230, 230, 230);
+	font-size: 16px;
+}
+
+.ticket > form > .comments > div {
+	width: max-content;
+	max-width: 75%;
+	margin: 25px 0;
+	padding: 15px;
+	border-radius: 10px;
+}
+
+.ticket > form > .comments > .they {
+	background-color: rgb(200, 200, 200);
+}
+
+.ticket > form > .comments > .me {
+	margin-left: auto;
+	color: white;
+	background-color: black;
+}
+
+.ticket > form > .leave-comment > button {
+	float: right;
+	width: 175px;
+	margin-top: 20px;
+}

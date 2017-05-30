@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+	<link rel="stylesheet" href="css/master.css">
+</head>
+<body>
+	<section class="container">
+		<div class="login-form">
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<h1 class="page-header">Ingreso:</h1>
+					<!-- Agregar enlace para enviar el formulario -->
+					<form action="../InicioSesion/InicioSesion.php" method="post">
+						<label for="#username">Nombre de usuario:</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-user fa-lg"></i></span>
+							<input type="text" class="form-control" name="NombreUsuario" id="username">
+						</div>
+						<label for="#password">Contraseña:</label>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="fa fa-lock fa-lg"></i></span>
+							<input type="password" class="form-control" name="Contrasena" id="password">
+						</div>
+						<hr>
+						<button class="btn btn-block" type="submit">Ingresar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
