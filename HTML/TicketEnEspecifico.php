@@ -16,8 +16,8 @@
 			<li><i class="fa fa-envelope fa-lg"></i><p>username@mail.com</p></li><!-- Correo electrónico de la seción actual -->
 		</ul>
 		<ul class="nav-bar">
-			<li ><a href="DashBoard.html"><i class="fa fa-home fa-lg"></i><p>Inicio</p></a></li>
-			<li><a href="Ticket.html"><i class="fa fa-ticket fa-lg"></i><p>Tickets</p></a></li>
+			<li ><a href="DashBoard.php"><i class="fa fa-home fa-lg"></i><p>Inicio</p></a></li>
+			<li><a href="Ticket.php"><i class="fa fa-ticket fa-lg"></i><p>Tickets</p></a></li>
 			<li><a href="RegistrarUsuario.php"><i class="fa fa-user-plus fa-lg"></i><p>Registrar usuario</p></a></li>
 		</ul>
 		<ul class="nav-bar bottom">
