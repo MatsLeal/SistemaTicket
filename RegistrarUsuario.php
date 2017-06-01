@@ -16,8 +16,8 @@
 			<li><i class="fa fa-envelope fa-lg"></i><p>username@mail.com</p></li><!-- Correo electrónico de la seción actual -->
 		</ul>
 		<ul class="nav-bar">
-			<li><a href="DashBoard.php"><i class="fa fa-home fa-lg"></i><p>Inicio</p></a></li>
-			<li><a href="Ticket.php"><i class="fa fa-ticket fa-lg"></i><p>Tickets</p></a></li>
+			<li><a href="DashBoard.html"><i class="fa fa-home fa-lg"></i><p>Inicio</p></a></li>
+			<li><a href="Ticket.html"><i class="fa fa-ticket fa-lg"></i><p>Tickets</p></a></li>
 			<li class="active"><a href="#"><i class="fa fa-user-plus fa-lg"></i><p>Registrar usuario</p></a></li>
 		</ul>
 		<ul class="nav-bar bottom">
@@ -29,7 +29,7 @@
 	<section class="container">
 		<h1 class="page-header">Registrar usuario</h1>
 		<!-- Agregar enlace para envíar el formulario -->
-		<form action="../Administrador/RegistrarUsuario.php" method="post">
+		<form action="#" method="post">
 			<!--
 
 			Nombre de cada campo en orden de aparición:
@@ -46,69 +46,39 @@
 			<label for="#username">Nombre de usuario:</label>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-user fa-lg"></i></span>
-				<input type="text" class="form-control" id="username" name="username" required>
+				<input type="text" class="form-control" id="username" name="username">
 			</div>
 			<label for="#name">Nombre(s):</label>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-user fa-lg"></i></span>
-				<input type="text" class="form-control" id="name" name="name" required>
+				<input type="text" class="form-control" id="name" name="name">
 			</div>
 			<label for="#lastname">Apellidos:</label>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-user fa-lg"></i></span>
-				<input type="text" class="form-control" id="lastname" name="lastname" required>
+				<input type="text" class="form-control" id="lastname" name="lastname">
 			</div>
-
-			<label for="#mail">Correo:</label>
-			<div class="input-group">
-				<span class="input-group-addon"><i class="fa fa-user fa-lg"></i></span>
-				<input type="text" class="form-control" id="correo" name="correo" required>
-			</div>
-
 			<label for="#password">Contraseña:</label>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-lock fa-lg"></i></span>
-				<input type="password" class="form-control" id="password" name="password" required>
+				<input type="password" class="form-control" id="password" name="password">
 			</div>
 			<label for="#passwordConfirm">Contraseña:</label>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-lock fa-lg"></i></span>
-				<input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" required>
+				<input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm">
 			</div>
-			<label for="#Estado">Estado:</label>
-			<div class="input-group">
-				<span class="input-group-addon"><i class="fa fa-lock fa-lg"></i></span>
-				<input type="text" class="form-control" id="Estado" name="Estado" required>
-			</div>
-			<label for="#department">Departamento:</label>
+			<label for="#department">Nombre de usuario:</label>
 			<div class="input-group">
 				<span class="input-group-addon"><i class="fa fa-user fa-lg"></i></span>
 				<select name="department" id="department" name="department" class="form-control">
-					<?php 
-					include '../Conexion.php';
-					session_start();
-					echo $_SESSION["IdUsuario"]."-----------------------------------";
-					if(!$_SESSION["IdUsuario"])
-						header("Location:index.html");
-					$Conexion->next_result();
-					$Resultado=$Conexion->query("call RetornaDepartamento()");
-					while($fila=mysqli_fetch_row($Resultado))
-					{
-						echo "<option >".$fila[0]."</option>";
-					}
-					?>
-					
+					<option value="option1">Option 1</option>
+					<option value="option2">Option 2</option>
+					<option value="option3">Option 3</option>
+					<option value="option4">Option 4</option>
+					<option value="option5">Option 5</option>
 				</select>
 			</div>
-			<label for="#usertype">Tipo de Usuario:</label>
-			<div class="input-group">
-				<span class="input-group-addon"><i class="fa fa-user fa-lg"></i></span>
-				<select name="usertype" id="usertype" class="form-control">
-					<option>Administrador</option>
-					<option>Usuario</option>
-				</select>
-			</div>
-
 			<br>
 			<button class="btn btn-block">Registrar usuario</button>
 		</form>
