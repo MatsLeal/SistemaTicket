@@ -143,6 +143,7 @@ nav.closed > .control {
 	padding: 20px;
 	background-color: rgb(240, 240, 240);
 	border-radius: 10px;
+	border: 1px solid rgb(150, 150, 150);
 	font-size: initial;
 }
 
@@ -168,6 +169,10 @@ nav.closed > .control {
 .tickets-panel > .ticket > .info {
 	margin-bottom: 10px;
 	font-size: 17px;
+	max-height: 90px;
+	min-height: 90px;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .tickets-panel > .ticket > .info > .username {

@@ -91,12 +91,9 @@
 				</form>
 			</div>
 			 		';
-			 		while($ticket[$i]!=NULL)
-			 			{
-			 			echo $ticket[$i];
-			 			$i++;
-			 			}
-			 		
+			 		foreach ($ticket as $value) {
+			 			echo $value;
+			 		}
 			 	}
 	
 

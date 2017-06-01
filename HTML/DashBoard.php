@@ -31,17 +31,45 @@
 		</ul>
 	</nav>
 	<!-- Contenido de la página -->
-	<section class="container">
+	<section class="container-fluid">
 		<!-- Gráficas -->
-		<canvas id="chart1"></canvas>
+		<div class="row" style="margin: 25vh; height: 50vh;">
+			<div class="col-sm-4">
+				<canvas id="chart1"></canvas>
+			</div>
+			<div class="col-sm-8">
+				<canvas id="chart2"></canvas>
+			</div>
+		</div>
 	</section>
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 	<script src="js/master.js"></script>
 	<script>
-		var ctx = document.getElementById('chart1').getContext('2d');
-		var myChart = new Chart(ctx, {
+		var ctx1 = document.getElementById('chart1').getContext('2d');
+		var ctx2 = document.getElementById('chart2').getContext('2d');
+
+		var myPieChart = new Chart(ctx1,{
+			type: 'doughnut',
+			data: {
+				datasets: [{
+					data: [10, 20, 30],//Valores de la gráfica
+					backgroundColor: [
+						'red',
+						'yellow',
+						'green'
+					],
+				}],
+				labels: [
+					'Abiert',
+					'Procesando',
+					'Cerrado'
+				],
+			}
+		});
+
+		var myChart = new Chart(ctx2, {
 			type: 'bar',
 			data: {
 				labels: ["Pendiente", "Abierto", "Procesando", "Cerrado"],
