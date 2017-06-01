@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 31, 2017 at 04:12 PM
+-- Generation Time: May 31, 2017 at 09:54 PM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -33,6 +33,8 @@ and  Estado.descripcion=EntDescripcion
     )
     where Ticket.IdTicket=EntIdTicket$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `AltaUsuario` (IN `Nom` VARCHAR(20), IN `Ape` VARCHAR(20), IN `NU` VARCHAR(20), IN `Contra` VARCHAR(20), IN `Est` VARCHAR(20), IN `descdep` VARCHAR(20), IN `corr` VARCHAR(20))  begin insert into Usuario values ( null,Nom,Ape,NU,Contra,Est,(select Departamento.IdDepartamento from Departamento where Departamento.Descripcion=descdep),corr ) ; end$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `InformacionUsuario` (IN `EntIdUsuario` INT(4))  BEGIN
  select Usuario.NombreUsuario,Usuario.Correo,Departamento.Descripcion from Usuario,Departamento where Usuario.IdUsuario=1 and Usuario.IdDepartamento=Departamento.IdDepartamento and Usuario.IdUsuario=EntIdUsuario ;
 END$$
@@ -45,6 +47,8 @@ select Usuario.IdUsuario,Usuario.Nombre,TablaComentario.Fecha,TablaComentario.Co
 on Administrador.IdUsuario=Comen.IdUsuario
 ;
 END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `RetornaDepartamento` ()  begin select Descripcion from Departamento ;  end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `RetornaPorcentajeEstadoTicket` ()  begin 
 set @total=(select count(*) from Ticket) ;
@@ -205,7 +209,8 @@ CREATE TABLE `Usuario` (
 
 INSERT INTO `Usuario` (`IdUsuario`, `Nombre`, `Apellido`, `NombreUsuario`, `Contrasena`, `Estado`, `IdDepartamento`, `Correo`) VALUES
 (1, 'Mats Johann', 'Leal Rangel', 'ddiatlov', '123456', 'Jalisco', 1, 'matsleal@Intel.com'),
-(2, 'Pedro', 'Salcido', 'grio', '123456', 'Jalisco', 2, 'grio@INTEL.com');
+(2, 'Pedro', 'Salcido', 'grio', '123456', 'Jalisco', 2, 'grio@INTEL.com'),
+(3, 'Ale', 'Gomez', 'Agomez', '123456', 'Jalisco', 2, 'agomez@Intel.com');
 
 --
 -- Indexes for dumped tables
@@ -275,7 +280,7 @@ ALTER TABLE `Ticket`
 -- AUTO_INCREMENT for table `Usuario`
 --
 ALTER TABLE `Usuario`
-  MODIFY `IdUsuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IdUsuario` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
