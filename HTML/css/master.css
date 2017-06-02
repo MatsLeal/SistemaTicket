@@ -136,7 +136,8 @@ nav.closed > .control {
 	font-size: 0;
 }
 
-.tickets-panel > .ticket {
+.tickets-panel > .ticket,
+.tickets-panel > .add-ticket {
 	display: inline-block;
 	width: 23%;
 	margin: 10px 1%;
@@ -145,6 +146,21 @@ nav.closed > .control {
 	border-radius: 10px;
 	border: 1px solid rgb(150, 150, 150);
 	font-size: initial;
+}
+
+.tickets-panel > .add-ticket {
+	text-align: center;
+	transform: translateY(-37px);
+	height: 175px;
+}
+
+.tickets-panel > .add-ticket:hover {
+	cursor: pointer;
+	background-color: rgb(220, 220, 220);
+}
+
+.tickets-panel > .add-ticket > i {
+	margin: 20% 0;
 }
 
 .tickets-panel > .ticket > .state {
@@ -184,7 +200,8 @@ nav.closed > .control {
 	font-size: 12px;
 }
 
-.ticket > form > select {
+.ticket > form > select,
+span.ticket-state {
 	float: right;
 	height: 35px;
 	margin-right: 25px;
@@ -192,6 +209,10 @@ nav.closed > .control {
 	border-radius: 10px;
 	background-color: rgb(240, 240, 240);
 	font-size: 20px;
+}
+
+span.ticket-state {
+	background-color: transparent!important;
 }
 
 .ticket > form > select:focus,
@@ -246,4 +267,34 @@ nav.closed > .control {
 	float: right;
 	width: 175px;
 	margin-top: 20px;
+}
+
+menu {
+	position: fixed;
+	width: 100vw;
+	margin: 0;
+	padding: 10px 0;
+	top: 0;
+	background-color: rgb(240, 240, 240);
+	z-index: 99;
+	border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+menu > menuitem {
+	margin: 0;
+	padding: 0 50px;
+	height: 100%;
+	vertical-align: middle;
+}
+
+menu > menuitem:first-child {
+	border-right: 1px solid rgb(150, 150, 150);
+}
+
+menu > menuitem.right {
+	float: right;
+}
+
+section.user {
+	margin-top: 50px;
 }
