@@ -15,10 +15,18 @@
 			<li><i class="fa fa-user fa-lg"></i><p>
 			<?php 
 			include '../Graficas/ControladorGraficas.php';
-			session_start();
-			echo $_SESSION["IdUsuario"];
+
+				session_start();
+			include "../Usuario/Usuario.php";
+			 $IdUsuario= $_SESSION["IdUsuario"];
+			 if(!$IdUsuario)
+			 	{
+ 					header("Location: ../index.php");
+ 				}
+ 			$InfoUsuario=InformacionUsuario($IdUsuario);
+
 			?></p></li><!-- Nombre de usuario de la sesión actual -->
-			<li><i class="fa fa-envelope fa-lg"></i><p>username@mail.com</p></li><!-- Correo electrónico de la seción actual -->
+			<li><i class="fa fa-envelope fa-lg"></i><p><?php echo $InfoUsuario[1]; ?></p></li><!-- Correo electrónico de la seción actual -->
 		</ul>
 		<ul class="nav-bar">
 			<li class="active"><a href="#"><i class="fa fa-home fa-lg"></i><p>Inicio</p></a></li>
@@ -54,15 +62,20 @@
 			type: 'doughnut',
 			data: {
 				datasets: [{
-					data: [10, 20, 30],//Valores de la gráfica
+					<?php  
+					$Resultado=RetornaPorcentajeEstadoTicket();
+					echo $Resultado;
+					?>
 					backgroundColor: [
-						'red',
-						'yellow',
-						'green'
+						'rgba(255,0,0,1)',
+						'rgba(105,105,0,.8)',
+						'green',
+						'rgba(25,50,100,1)'
 					],
 				}],
 				labels: [
-					'Abiert',
+					'Pendiente',
+					'Abierto',
 					'Procesando',
 					'Cerrado'
 				],
@@ -76,21 +89,21 @@
 				datasets: [{
 					label: 'Numero de  Tickets',
 					<?php  
-					$Resultado=RetornaPorcentajeEstadoTicket();
+					$Resultado=RetornaPorcentajeEstadoTicketBarra();
 					echo $Resultado;
 					?>
 
 					backgroundColor: [
 						'rgba(255,0,0,0.3)',
-						'rgba(255,255,0,0.3)',
+						'rgba(105,105,0,.8)',
 						'rgba(0,255,0,0.3)',
-						'rgba(255,0,255,0.3)'
+						'rgba(25,50,100,1)'
 					],
 					borderColor: [
 						'rgba(255,0,0,1)',
-						'rgba(255,255,0,1)',
+						'rgba(105,105,0,.8)',
 						'rgba(0,255,0,1)',
-						'rgba(255,0,255,1)'
+						'rgba(25,50,100,1)'
 					],
 					borderWidth: 1
 				}]

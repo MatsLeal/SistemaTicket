@@ -67,6 +67,8 @@
 			 		echo 
 			 		'
 			 		<div class="ticket">
+			 		<h2 text-aling-center>#'.$ticket[0].'</h2>
+			 		<div class="username">'.$ticket[1].'</div>
 				<div class=';
 				if(strcmp($ticket[2],"Abierto")==0)
 					echo "'state warning'";
@@ -74,19 +76,31 @@
 					echo "'state danger'";
 				if(strcmp($ticket[2],"Cerrado")==0)
 					echo "'state success'";
-
+				echo '
+				></div>';
+				echo $ticket[2];
 				echo 
-				'></div>
-				<div class="info">
-					<div class="username">'.$ticket[1].'</div>
+				'
+				
+				
+
+					
 					<div class="email">'.$ticket[3].'</div>
 					<div class="brief-description">'.$ticket[4].'</div>
-				</div>
+				
 				
 				<form action=TicketEnEspecifico.php method="POST">
 				<input type="hidden" name="IdTicket" value="'; echo $ticket[0] ; echo '">
 				<input type="hidden" name="IdUsuario" value="'; echo $IdUsuario ; echo '">
 				<input type="submit" value="Ver Completo">
+				</input>
+				</form>
+
+				
+				<form action=../Ticket/EliminaTicket.php method="POST">
+				<input type="hidden" name="IdTicket" value="'; echo $ticket[0] ; echo '">
+				<input type="hidden" name="IdUsuario" value="'; echo $IdUsuario ; echo '">
+				<input type="submit" value="Eliminar">
 				</input>
 				</form>
 			</div>

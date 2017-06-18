@@ -13,11 +13,25 @@ echo $password=$_POST["password"];
 echo $Estado=$_POST["Estado"];
 echo $department=$_POST["department"];
 echo $usertype=$_POST["usertype"];
-echo $corre=$_POST["correo"];
-$sql='
-call AltaUsuario("$name","$lastname","$username","$password","$Estado","$department","$correo") |
-';
+echo $correo=$_POST["correo"];
+$sql="
+call AltaUsuario('$name','$lastname','$username','$password','$Estado','$department','$correo') ;";
 $Conexion->query($sql);
+$Conexion->next_result();
+echo $sql;
+if($usertype=="Administrador")
+	{
+		$sql="select Usuario.IdUsuario from Usuario where correo='$correo'";
+		$Result=$Conexion->query($sql);
+		while($row=mysqli_fetch_row($Result))
+		{
+			$IdUsuarioAgrega=$row[0];
+		}
+
+	$sql="INSERT INTO Administrador VALUES ($IdUsuarioAgrega)";
+	$Conexion->query($sql);
+	echo "<br>".$sql;
+	}
 header("Location:../HTML/RegistrarUsuario.php");
 
 

@@ -1,8 +1,4 @@
-<?php
-session_start();
-// echo $_SESSION["IdUsuario"];
 
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,46 +12,59 @@ session_start();
 <body>
 	<header>
 		<menu>
-			<menuitem>Username</menuitem>
-			<menuitem>username@mail.com</menuitem>
-			<menuitem class="right"><a href="#"><i class="fa fa-sign-out fa-lg"></i>Salir</a></menuitem>
+		<?php
+			session_start();
+			include "../Usuario/Usuario.php";
+			 $IdUsuario= $_SESSION["IdUsuario"];
+			 if(!$IdUsuario)
+			 	{
+ 					header("Location: ../index.php");
+ 				}
+ 			$InfoUsuario=InformacionUsuario($IdUsuario);
+
+
+
+ 		echo "
+			<menuitem>$InfoUsuario[0]</menuitem>
+			<menuitem>$InfoUsuario[1]</menuitem>
+			<menuitem class='right'><a href='../index.php'><i class='fa fa-sign-out fa-lg'></i>Salir</a></menuitem>
+			";
+			?>
 		</menu>
 	</header>
 	<section class="user container">
 		<div class="tickets-panel">
-			<div class="ticket">
-				<div class="state danger"></div>
-				<div class="info">
-					<div class="username">Username</div>
-					<div class="email">username@domain.com</div>
-					<div class="brief-description">
-						Lorem ipsum dolor sit amet
+		<?php
+ 			$Tickets=RetornaTicketDeUsuario($IdUsuario);
+ 			while($Ticket=mysqli_fetch_row($Tickets))
+ 			{
+			echo "
+ 				<div class='ticket'>
+				<div class=";
+				if(strcmp($Ticket[2],"Abierto")==0)
+					echo "'state warning'";
+				if(strcmp($Ticket[2],"Pendiente")==0)
+					echo "'state danger'";
+				if(strcmp($Ticket[2],"Cerrado")==0)
+					echo "'state success'";
+				echo "></div>
+				<div class='info'>
+					<div class='username'>$InfoUsuario[0]</div>
+					<div class='email'>$InfoUsuario[1]</div>
+					<div class='brief-description'>
+						$Ticket[4]
 					</div>
 				</div>
-				<a href="TicketEnEspecifico.php" class="btn btn-block">Ver Completo</a>
-			</div>
-			<div class="ticket">
-				<div class="state warning"></div>
-				<div class="info">
-					<div class="username">Username</div>
-					<div class="email">username@domain.com</div>
-					<div class="brief-description">
-						Lorem ipsum dolor sit amet
-					</div>
-				</div>
-				<a href="TicketEnEspecifico.php" class="btn btn-block">Ver Completo</a>
-			</div>
-			<div class="ticket">
-				<div class="state success"></div>
-				<div class="info">
-					<div class="username">Username</div>
-					<div class="email">username@domain.com</div>
-					<div class="brief-description">
-						Lorem ipsum dolor sit amet
-					</div>
-				</div>
-				<a href="TicketEnEspecifico.php" class="btn btn-block">Ver Completo</a>
-			</div>
+				<form action=TicketEnEspecifico.php method='POST'>
+				<input type='hidden' name='IdTicket' value='"; echo $Ticket[0] ; echo "'>
+				<input type='hidden' name='IdUsuario' value='"; echo $IdUsuario ; echo "'>
+				<input type='submit' value='Ver Completo'>
+				</form>					
+			</div>		
+			";
+ 			}
+		?>
+
 			<div class="add-ticket" onclick="location.href='NuevoTicket.php'">
 				<i class="fa fa-plus fa-3x"></i>
 			</div>

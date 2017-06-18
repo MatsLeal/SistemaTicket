@@ -33,15 +33,16 @@
 			include '../Ticket/ActividadTicketEspecifico.php';
 			include '../Conexion.php';
 			session_start();
-
 			echo $IdUsuario=$_SESSION["IdUsuario"];
 			if(!$IdUsuario)
 				header("Location:../index.php");
-
 			$IdTicket=$_POST["IdTicket"];
 			if(!$IdTicket)
+			{
+				$Id_Ticket=$_SESSION["IdTicket"];
+			}
+			if(!$IdTicket)
 				$IdTicket=$_SESSION["IdTicket"];
-
 			$Ticket=RetornaTicket($IdTicket);
 			if(!$Ticket)
 			{
@@ -61,8 +62,6 @@
 			";
 			while($ticket=mysqli_fetch_row($Ticket))
 			{
-				
-
 			echo '
 			<h1 class="page-header">'.$ticket[1].'</h1><!-- Nombre de usuario de quien generó el ticket -->
 				<!-- Cambia los valores del select -->
@@ -77,12 +76,22 @@
 					echo '
 				</select>
 				<div class="info">
-					<p>username@mail.com</p><!-- Correo electrónico de quien generó el ticket -->
+				';
+				if($ticket[7]!="")
+					echo '
+					<label font-color="Blue">
+					<a href="'.$ticket[7].'" target="_blank">Archivo</a><!-- Correo electrónico de quien generó el ticket -->
+					</label>
+					';
+					echo '
 					<p>'.$ticket[3].'</p><!-- ??? Venía en la documentación -->
 				</div>
 				<!-- Mensaje completo del ticket -->
 				<div class="message">
 				'.$ticket[4].'
+				</div>
+				<div class="message">
+				'.$ticket[5].'
 				</div>
 			';
 			$IDT=$ticket[0];

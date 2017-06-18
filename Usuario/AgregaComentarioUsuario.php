@@ -9,9 +9,5 @@ $Comentario= $_POST["comment"];
 $sql="INSERT INTO Comentario values(null,$IdTicket,'$Comentario',curdate(),$IdUsuario)";
 $Conexion->query($sql);
 $_SESSION["IdTicket"]=$IdTicket;
-header("Location:../HTML/TicketEnEspecifico.php");
-
-
-
-
+header("Location:TicketEnEspecifico.php");
 ?>

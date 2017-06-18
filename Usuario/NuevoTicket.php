@@ -11,10 +11,21 @@
 	<!-- Barra lateral de navegación. No tocar, es frágil. :( -->
 	<header>
 		<menu>
-			<menuitem>Username</menuitem>
-			<menuitem>username@mail.com</menuitem>
-			<menuitem class="right"><a href="#"><i class="fa fa-sign-out fa-lg"></i>Salir</a></menuitem>
-			<menuitem class="right" style="border-right: 1px solid rgb(150, 150, 150);"><a href="UsarSistema.php"><i class="fa fa-arrow-left fa-lg"></i> Regresar</a></menuitem>
+		<?php
+			session_start();
+			include "../Usuario/Usuario.php";
+			 $IdUsuario= $_SESSION["IdUsuario"];
+			 if(!$IdUsuario)
+			 	{
+ 					header("Location: ../index.php");
+ 				}
+ 			$InfoUsuario=InformacionUsuario($IdUsuario);
+ 		echo "
+			<menuitem>$InfoUsuario[0]</menuitem>
+			<menuitem>$InfoUsuario[1]</menuitem>
+			<menuitem class='right'><a href='../index.php'><i class='fa fa-sign-out fa-lg'></i>Salir</a></menuitem>
+			";
+			?>
 		</menu>
 	</header>
 	<!-- Contenido de la página -->
@@ -22,11 +33,13 @@
 		<h1 class="page-header">Generar nuevo ticket</h1>
 		<div class="ticket">
 			<!-- Agregar enlace para envíar el formulario -->
-			<form action="#" method="post">
+			<form action="../Ticket/AgregaTicket.php" method="post" enctype="multipart/form-data">
 				<div class="message">
 					<!-- Agregar nombre del área de texto -->
-					<textarea name="[]" id="" cols="30" rows="10" class="form-control"></textarea>
+					<textarea name="descripcion" id="" cols="1" rows="1" class="form-control" placeholder="Breve Descripcion" required></textarea>
+					<textarea name="mensaje" id="" cols="30" rows="10" class="form-control" placeholder="Mensaje completo del Ticket" required></textarea>
 				</div>
+				<input type="file" name="fileToUpload" id="fileToUpload">
 				<div class="leave-comment"><button class="btn btn-lg">Enviar ticket</button></div>
 			</form>
 		</div>
